@@ -3,10 +3,9 @@ package com.CRUD_Spring_Angular.controller;
 import com.CRUD_Spring_Angular.entity.Customer;
 import com.CRUD_Spring_Angular.service.CustomerService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/AngSpring")
@@ -17,6 +16,11 @@ public class CustomerController {
     @PostMapping("/customer")
     public Customer postCustomer(@RequestBody Customer customer) {
         return customerService.postCustomer(customer);
+    }
+
+    @GetMapping("/allcustomer")
+    private List<Customer> getAllCustomer(){
+        return customerService.getAllCustomer();
     }
 
 }

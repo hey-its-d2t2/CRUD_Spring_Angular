@@ -5,6 +5,8 @@ import com.CRUD_Spring_Angular.repository.CustomerRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class CustomerService {
@@ -13,5 +15,9 @@ public class CustomerService {
 
     public Customer postCustomer(Customer customer) {
         return customerRepository.save(customer);
+    }
+
+    public List<Customer> getAllCustomer(){
+        return customerRepository.findAll();
     }
 }
