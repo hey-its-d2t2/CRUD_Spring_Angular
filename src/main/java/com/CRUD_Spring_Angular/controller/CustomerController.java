@@ -3,6 +3,7 @@ package com.CRUD_Spring_Angular.controller;
 import com.CRUD_Spring_Angular.entity.Customer;
 import com.CRUD_Spring_Angular.service.CustomerService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -23,4 +24,12 @@ public class CustomerController {
         return customerService.getAllCustomer();
     }
 
+    @GetMapping("/customer/{id}")
+    private ResponseEntity<Customer> getCustomerById(@PathVariable Long id){
+        Customer customerById = customerService.getCustomerById(id);
+        if(customerById == null){
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(customerById);
+    }
 }
