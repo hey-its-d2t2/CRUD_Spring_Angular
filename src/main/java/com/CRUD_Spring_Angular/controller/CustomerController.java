@@ -45,4 +45,14 @@ public class CustomerController {
         Customer updateeCus = customerService.updateCustomer(existingCustomer);
         return ResponseEntity.ok(updateeCus);
     }
+
+    @DeleteMapping("/deleteCustoemr/{id}")
+    public ResponseEntity<Void> deleteCustomer(@PathVariable Long id){
+        Customer customerById = customerService.getCustomerById(id);
+        if(customerById == null){
+            return ResponseEntity.notFound().build();
+        }
+        customerService.deleteCustomer(id);
+        return ResponseEntity.ok().build();
+    }
 }
